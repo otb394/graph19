@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\input{macros}
+\usepackage{graphics,tikz}
+\def\geom{\text{geom}}
+\def\sim{\text{sim}}
+\def\R{\mathbb{R}}\begin{document}
+
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{7}{Sep 16, 2019}{Don Sheehy}{Palash Gupta, Rishabh Agrawal, Jash Dhakad }
+
+  % \title{Lecture 6}
+  % \author{Scribed by: }
+  % \maketitle
+\section{Menger's Theorem}
+\begin{definition}
+G is k connected iff for all u,v $\in V_{G}$ there exist k disjoint paths from u to v.\\
+Disjoint suggests that there will be no shared vertices except ends.
+
+%Let X and Y be simplicial complexes. A simplicial map $f: X \rightarrow Y$ is a pair of functions:
+%\centerline {$f_v: V_X \rightarrow V_Y$ and $f_S: S_X \rightarrow S_Y$}
+
+%where $f_S(\sigma) = \{ f_V(u): u \in \sigma \}$
+\end{definition}
+\begin{theorem}
+    G is bipartite iff it contains no odd length cycles.
+\end{theorem}
+\begin{proof}[Proof idea]
+  
+\end{proof}
+  
+\begin{definition}
+    A forest is a graph that contains no cycles.
+\end{definition}
+\begin{definition}
+    A connected forest is called a tree.
+\end{definition}
+\begin{theorem}
+    A connected graph is a tree iff it contains no {$C_3$} minor.
+\end{theorem}
+\begin{proof}[Proof idea:]
+    Edge contraction. \\
+    
+\end{proof}
+Based on the preimages of the {$C_3$} minor we can backtrack to where this might have originated from.
+
+\begin{text}
+{\textbf{Claim:} Given a tree and two vertices, u,v $\in V_{T}$ there exists a unique path u to v in T.}   
+\end{text}
+
+\begin{text}
+{\textbf {Question: }Prove that no tree is 2 connected.}
+    \begin{proof}
+        Bla Bla Bla....       
+    \end{proof}
+\end{text}
+\begin{text}
+{\textbf {Corollary: }Removal of an edge in a tree will separate the graph.}
+    \begin{proof}
+        Bla Bla Bla....       
+    \end{proof}
+\end{text}
+\begin{definition}
+A leaf \footnote{A \textbf{star} has (n-1) leaves and a \textbf{path} has 2 leaves} of a tree (graph) is a degree 1 vertex. On separating leaf we are still left with a connected graph.
+\end{definition}
+
+\begin{theorem}
+    Every tree with atleast 2 vertices has atleast 2 leaves.
+    \begin{proof}[Proof idea:]
+        Path is a minor of a tree. \\
+    \end{proof}
+\end{theorem}
+\begin{text}
+{\textbf {Question: }Prove every forest is bipartite}
+    \begin{proof}
+        Bla Bla Bla....       
+    \end{proof}
+\end{text}
+\begin{text}
+{\textbf {Question: }How many edges can a tree with n vertices have?}
+    \begin{proof}[Solution: ]
+        A tree with n vertices has (n-1) edges.       
+    \end{proof}
+    {\textbf {Note: }A forest will have atmost (n-1) edges.}
+    
+\end{text}
+
+\end{document}
