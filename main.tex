@@ -25,7 +25,7 @@
     A graph G is k-connected iff for all u,v $\in V_{G}$, there exist k disjoint\footnote{Disjoint paths are those which no shared vertices except the end vertices} paths from u to v.
 \end{theorem}
 
-\section{Trees and forrests}
+\section{Trees and forests}
 \begin{theorem}
     G is bipartite iff it contains no odd length cycles.
 \end{theorem}
@@ -34,15 +34,19 @@
     To prove this we need to prove both the cases, i.e. if a graph is bipartite, it contains no odd cycles and if a graph contains no odd cycles, it is bipartite.\\
 
     \begin{case}
-        Let's prove the first direction. Let $G$ be a bipartite graph. We'll prove that it contains no odd cycles by contradiction. First let us assume that it contains an odd cycle of size $n$. We'll number all the vertices on this cycle from $0$ to $n-1$ such that there is an edge between $i$ and $i-1$ for all $i$ from $1$ to $n-1$. Also, there is an edge between $n-1$ and $0$, completing the cycle. As this is a bipartite graph, all the vertices can be divided into two sets $A$ and $B$, such that for any edge $(u,v) \in E_{G}$, $u \in A$ and $v \in B$. Let's say vertex $0 \in A$, then $1 \in B$ (because there is an edge between $0$ and $1$), $2 \in A$ and so on. We can observe that all even numbered vertices belong to $A$ whereas all odd numbered vertices belong to $B$. $n$ is an odd number (as this is an odd cycle), therefore $n-1$ is an even number and vertex labeled $n-1 \in A$. But there is an edge between $n-1$ and $0$ and both belong to set $A$. This is not allowed in a bipartite graph. Therefore, our assumption must be wrong and there cannot exist an odd length cycle in graph $G$.
+        If a graph is bipartite, it cannot contain an odd cycle.\\
+        \\
+        Let $G$ be a bipartite graph. We'll prove that it contains no odd cycles by contradiction. First let us assume that it contains an odd cycle of size $n$. We'll number all the vertices on this cycle from $0$ to $n-1$ such that there is an edge between $i$ and $i-1$ for all $i$ from $1$ to $n-1$. Also, there is an edge between $n-1$ and $0$, completing the cycle. As this is a bipartite graph, all the vertices can be divided into two sets $A$ and $B$, such that for any edge $(u,v) \in E_{G}$, $u \in A$ and $v \in B$. Let's say vertex $0 \in A$, then $1 \in B$ (because there is an edge between $0$ and $1$), $2 \in A$ and so on. We can observe that all even numbered vertices belong to $A$ whereas all odd numbered vertices belong to $B$. $n$ is an odd number (as this is an odd cycle), therefore $n-1$ is an even number and vertex labeled $n-1 \in A$. But there is an edge between $n-1$ and $0$ and both belong to set $A$. This is not allowed in a bipartite graph. Therefore, our assumption must be wrong and there cannot exist an odd length cycle in graph $G$.
     \end{case}
 
     \begin{case}
-        Let's prove the other direction. Let $G$ be a graph with no odd length cycle. We need to prove that it is bipartite. We'll do that by defining an algorith to divide the vertices in two sets and then prove that conditions of a bipartite graph are satified.\\
+        If a graph has no odd length cycle, it is bipartite.\\
+        \\
+        Let $G$ be a graph with no odd length cycle. We need to prove that it is bipartite. We'll do that by defining an algorithm to divide the vertices in two sets and then prove that conditions of a bipartite graph are satisfied.\\
         \\Following are the steps to partition the vertices into sets $A$ and $B$:
         \begin{enumerate}
             \item Choose any arbitrary vertex as the starting point. Let's call it S.
-            \item Label all vertices by the minimum no. of edges we need to travel to S, i.e. by the minimum distance from S.
+            \item Label all vertices by the minimum number of edges we need to travel to S, i.e. by the minimum distance from S.
             \item From the vertices which are yet to be labelled (as they are not connected to S), choose an arbitrary vertex and repeat the process till all vertices are labelled.
             \item Put all vertices with even labels in set $A$ and all vertices with odd labels in set $B$.
         \end{enumerate}
@@ -59,11 +63,148 @@
 \begin{theorem}
     A connected graph is a tree iff it contains no {$C_3$} minor.
 \end{theorem}
-\begin{proof}[Proof idea:]
-    Edge contraction. \\
-\end{proof}
 
-Based on the preimages of the {$C_3$} minor we can backtrack to where this might have originated from.
+\begin{proof}
+    \begin{case}
+To prove that if the graph is a tree then it does not contain a $C_3$ minor.\\
+\\
+Proof by contradiction: \\
+Let us assume that the graph G contains a $C_3$ minor. If this is true, we can state that the subgraph of G can be reduced to a $C_3$ minor by edge contraction, which means that there exists a cycle in the graph. The definition of tree states that any graph which does not have any cycle. Hence, our assumption was wrong and we can say that G is a tree if it does not contain a $C_3$ minor.  \\
+    \end{case}
+
+    \begin{case}
+To prove that if the graph does not contain a $C_3$ minor then it is a tree.\\
+\\Proof by contradiction: 
+\\
+Let us assume that the graph, G is not a tree which means there exists a connected graph with a cycle. If this is true, then we can say that any cycle can be reduced to a $C_3$ minor by edge contraction which contradicts the assumption made and suggests that the graph contains a $C_3$ minor. Hence, our assumption was wrong and so we can say that if the graph does not contain a $C_3$ minor then it is a tree.   
+
+
+\begin{center}
+    
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,723); %set diagram left start at 0, and has height of 723
+
+%Straight Lines [id:da17346525375595823] 
+\draw    (169,65) -- (209,109) ;
+
+
+%Straight Lines [id:da642015983522537] 
+\draw    (465,63) -- (527,121) ;
+
+
+%Straight Lines [id:da14931962569626012] 
+\draw    (169,65) -- (149,120) ;
+
+
+%Straight Lines [id:da08080995923232726] 
+\draw    (169,65) -- (259,77) ;
+
+
+%Straight Lines [id:da7297042825487361] 
+\draw    (406,106) -- (446,150) ;
+
+
+%Straight Lines [id:da9983591846519424] 
+\draw    (249,153) -- (289,197) ;
+
+
+%Straight Lines [id:da39921401012667346] 
+\draw    (259,77) -- (406,106) ;
+
+
+%Straight Lines [id:da8884551136199939] 
+\draw    (465,63) -- (406,106) ;
+
+
+%Straight Lines [id:da36258657409434103] 
+\draw    (149,120) -- (140,66) ;
+
+
+%Straight Lines [id:da8653085358128052] 
+\draw    (209,109) -- (249,153) ;
+
+
+%Straight Lines [id:da9820821296870912] 
+\draw    (289,197) -- (381,169) ;
+
+
+%Straight Lines [id:da16410625947921065] 
+\draw    (289,197) -- (373,208) ;
+
+
+%Straight Lines [id:da38435752905494924] 
+\draw    (446,150) -- (381,169) ;
+
+
+%Straight Lines [id:da3382749363158353] 
+\draw    (289,197) -- (329,241) ;
+
+
+%Straight Lines [id:da9797038377585146] 
+\draw    (289,197) -- (254,248) ;
+
+
+%Shape: Circle [id:dp47392873976328787] 
+\draw   (105,102) .. controls (105,61.68) and (137.68,29) .. (178,29) .. controls (218.32,29) and (251,61.68) .. (251,102) .. controls (251,142.32) and (218.32,175) .. (178,175) .. controls (137.68,175) and (105,142.32) .. (105,102) -- cycle ;
+%Shape: Circle [id:dp971042509290946] 
+\draw   (377,125) .. controls (377,80.26) and (413.26,44) .. (458,44) .. controls (502.74,44) and (539,80.26) .. (539,125) .. controls (539,169.74) and (502.74,206) .. (458,206) .. controls (413.26,206) and (377,169.74) .. (377,125) -- cycle ;
+%Left Arrow [id:dp3157799490145934] 
+\draw   (303.39,410) -- (290.1,367.53) -- (296.85,367.57) -- (297.16,303.97) -- (310.66,304.03) -- (310.35,367.63) -- (317.1,367.66) -- cycle ;
+%Straight Lines [id:da5554865929934945] 
+\draw    (259,584) -- (298,641) ;
+
+
+%Straight Lines [id:da012688686285775796] 
+\draw    (145,452) -- (161,515) ;
+
+
+%Straight Lines [id:da4841755849594085] 
+\draw    (212,639) -- (259,584) ;
+
+
+%Straight Lines [id:da8326150314982221] 
+\draw    (161,515) -- (197,441) ;
+
+
+%Straight Lines [id:da10427054510928668] 
+\draw    (197,441) -- (259,584) ;
+
+
+%Straight Lines [id:da9955678761970332] 
+\draw    (392,483) -- (259,584) ;
+
+
+%Straight Lines [id:da24379949366012799] 
+\draw    (197,441) -- (392,483) ;
+
+
+%Straight Lines [id:da8190446038982127] 
+\draw    (259,584) -- (359,605) ;
+
+
+%Straight Lines [id:da8459756464497579] 
+\draw    (392,483) -- (471,440) ;
+
+
+%Straight Lines [id:da48257728570050773] 
+\draw    (471,440) -- (511,484) ;
+
+
+
+% Text Node
+\draw (392,348) node  [align=left] {Edge Contraction};
+% Text Node
+\draw (476,601) node  [align=left] {The subgraph has a cycle};
+
+
+\end{tikzpicture}
+
+\end{center}
+
+    \end{case}
+\end{proof}
 
 \begin{text}
 {\textbf{Claim:} Given a tree and two vertices, u,v $\in V_{T}$ there exists a unique path u to v in T.}   
@@ -86,7 +227,7 @@ A leaf \footnote{A \textbf{star} has (n-1) leaves and a \textbf{path} has 2 leav
 \end{definition}
 
 \begin{theorem}
-    Every tree with atleast 2 vertices has atleast 2 leaves.
+    Every tree with at least 2 vertices has at least 2 leaves.
     \begin{proof}[Proof idea:]
         Path is a minor of a tree. \\
     \end{proof}
@@ -102,7 +243,7 @@ A leaf \footnote{A \textbf{star} has (n-1) leaves and a \textbf{path} has 2 leav
     \begin{proof}[Solution: ]
         A tree with n vertices has (n-1) edges.       
     \end{proof}
-    {\textbf {Note: }A forest will have atmost (n-1) edges.}
+    {\textbf {Note: }A forest will have at most (n-1) edges.}
     
 \end{text}
 
