@@ -4,32 +4,50 @@
 
 \input{macros}
 \usepackage{graphics,tikz}
-\def\geom{\text{geom}}
-\def\sim{\text{sim}}
-\def\R{\mathbb{R}}\begin{document}
+\usepackage{chngcntr}
+
+%\newtheoremstyle{case}{}{}{}{}{\bfseries}{:}{ }{}
+%\theoremstyle{case}
+\newtheorem{case}{Case}
+\counterwithin*{case}{theorem}
+%\def\geom{\text{geom}}
+%\def\sim{\text{sim}}
+%\def\R{\mathbb{R}}
+
+\begin{document}
 
 %FILL IN THE RIGHT INFO.
 %\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
 \lecture{7}{Sep 16, 2019}{Don Sheehy}{Palash Gupta, Rishabh Agrawal, Jash Dhakad }
 
-  % \title{Lecture 6}
-  % \author{Scribed by: }
-  % \maketitle
 \section{Menger's Theorem}
-\begin{definition}
-G is k connected iff for all u,v $\in V_{G}$ there exist k disjoint paths from u to v.\\
-Disjoint suggests that there will be no shared vertices except ends.
+\begin{theorem}[Menger's Theorem]
+    A graph G is k-connected iff for all u,v $\in V_{G}$, there exist k disjoint\footnote{Disjoint paths are those which no shared vertices except the end vertices} paths from u to v.
+\end{theorem}
 
-%Let X and Y be simplicial complexes. A simplicial map $f: X \rightarrow Y$ is a pair of functions:
-%\centerline {$f_v: V_X \rightarrow V_Y$ and $f_S: S_X \rightarrow S_Y$}
-
-%where $f_S(\sigma) = \{ f_V(u): u \in \sigma \}$
-\end{definition}
+\section{Trees and forrests}
 \begin{theorem}
     G is bipartite iff it contains no odd length cycles.
 \end{theorem}
-\begin{proof}[Proof idea]
-  
+
+\begin{proof}
+    To prove this we need to prove both the cases, i.e. if a graph is bipartite, it contains no odd cycles and if a graph contains no odd cycles, it is bipartite.\\
+
+    \begin{case}
+        Let's prove the first direction. Let $G$ be a bipartite graph. We'll prove that it contains no odd cycles by contradiction. First let us assume that it contains an odd cycle of size $n$. We'll number all the vertices on this cycle from $0$ to $n-1$ such that there is an edge between $i$ and $i-1$ for all $i$ from $1$ to $n-1$. Also, there is an edge between $n-1$ and $0$, completing the cycle. As this is a bipartite graph, all the vertices can be divided into two sets $A$ and $B$, such that for any edge $(u,v) \in E_{G}$, $u \in A$ and $v \in B$. Let's say vertex $0 \in A$, then $1 \in B$ (because there is an edge between $0$ and $1$), $2 \in A$ and so on. We can observe that all even numbered vertices belong to $A$ whereas all odd numbered vertices belong to $B$. $n$ is an odd number (as this is an odd cycle), therefore $n-1$ is an even number and vertex labeled $n-1 \in A$. But there is an edge between $n-1$ and $0$ and both belong to set $A$. This is not allowed in a bipartite graph. Therefore, our assumption must be wrong and there cannot exist an odd length cycle in graph $G$.
+    \end{case}
+
+    \begin{case}
+        Let's prove the other direction. Let $G$ be a graph with no odd length cycle. We need to prove that it is bipartite. We'll do that by defining an algorith to divide the vertices in two sets and then prove that conditions of a bipartite graph are satified.\\
+        \\Following are the steps to partition the vertices into sets $A$ and $B$:
+        \begin{enumerate}
+            \item Choose any arbitrary vertex as the starting point. Let's call it S.
+            \item Label all vertices by the minimum no. of edges we need to travel to S, i.e. by the minimum distance from S.
+            \item From the vertices which are yet to be labelled (as they are not connected to S), choose an arbitrary vertex and repeat the process till all vertices are labelled.
+            \item Put all vertices with even labels in set $A$ and all vertices with odd labels in set $B$.
+        \end{enumerate}
+        Now we need to show that sets $A$ and $B$ so formed follow the conditions of a bipartite graph, i.e. no edge can exist between two vertices of same set (either $A$ or $B$), i.e. that $A$ and $B$ are independent sets.
+    \end{case}
 \end{proof}
   
 \begin{definition}
@@ -43,8 +61,8 @@ Disjoint suggests that there will be no shared vertices except ends.
 \end{theorem}
 \begin{proof}[Proof idea:]
     Edge contraction. \\
-    
 \end{proof}
+
 Based on the preimages of the {$C_3$} minor we can backtrack to where this might have originated from.
 
 \begin{text}
