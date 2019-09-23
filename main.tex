@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb,amsthm,txfonts}
 
 \input{macros}
 \usepackage{graphics,tikz}
@@ -22,7 +22,7 @@
 
 \section{Menger's Theorem}
 \begin{theorem}[Menger's Theorem]
-    A graph G is k-connected iff for all u,v $\in V_{G}$, there exist k disjoint\footnote{Disjoint paths are those which no shared vertices except the end vertices} paths from u to v.
+    A graph G is k-connected iff for all u,v $\in V_{G}$, there exist k disjoint\footnote{\label{disjoint}Disjoint paths are those which no shared vertices except the end vertices} paths from u to v.
 \end{theorem}
 
 \section{Trees and forests}
@@ -45,12 +45,31 @@
         Let $G$ be a graph with no odd length cycle. We need to prove that it is bipartite. We'll do that by defining an algorithm to divide the vertices in two sets and then prove that conditions of a bipartite graph are satisfied.\\
         \\Following are the steps to partition the vertices into sets $A$ and $B$:
         \begin{enumerate}
-            \item Choose any arbitrary vertex as the starting point. Let's call it S.
-            \item Label all vertices by the minimum number of edges we need to travel to S, i.e. by the minimum distance from S.
-            \item From the vertices which are yet to be labelled (as they are not connected to S), choose an arbitrary vertex and repeat the process till all vertices are labelled.
+            \item Choose any arbitrary vertex as the starting point. Let's call it $s$.
+            \item Label all vertices by the minimum number of edges we need to travel to $s$, i.e. by the minimum distance from $s$.
+            \item From the vertices which are yet to be labelled (as they are not connected to $s$), choose an arbitrary vertex and repeat the process till all vertices are labelled.
             \item Put all vertices with even labels in set $A$ and all vertices with odd labels in set $B$.
         \end{enumerate}
-        Now we need to show that sets $A$ and $B$ so formed follow the conditions of a bipartite graph, i.e. no edge can exist between two vertices of same set (either $A$ or $B$), i.e. that $A$ and $B$ are independent sets.
+        Now we need to show that sets $A$ and $B$ so formed follow the conditions of a bipartite graph, i.e. no edge can exist between two vertices of same set (either $A$ or $B$), i.e. that $A$ and $B$ are independent sets. We'll prove this by contradiction. Let's assume that $u$ and $v$ are two vertices of the same set (either $A$ or $B$) and have an edge between them. Let the label of $u$ be $x$ and $v$ be $y$ respectively. As they are of the same set, either both $x$ and $y$ are odd or both are even.\\
+        \\
+        Let $p$ be a path of length $x$ from $s$ to $u$. $p$ is the minimal length path from $s$ to $u$.\\
+        \begin{equation}
+            p = [s,p_{1},p_{2},\dots,p_{x-1},u]
+        \end{equation}
+        \phantom{xxxxxxxxxxxxxxxxxxxxxxxxx}Similarly,
+        \begin{equation}
+            q = [s,q_{1},q_{2},\dots,q_{y-1},v]
+        \end{equation}
+        Observe that $p_{i}$ vertex will have the label $i$. This is because it can be reached from $s$ in minimum of $i$ steps. All these vertices ($u$, $v$,$p_{i}$, $q_{j}$ etc.) are connected to $s$. If it was possible to reach $p_{i}$ in less than $i$ steps, then $u$ can be reached in less than $x$, which is not possible as $x$ is the label of $u$. Similarly, label of $q_{j}$ is $j$. Now there can be two cases:\\
+        \\
+        If $p$ \& $q$ are disjoint paths, then $p_{i}\ne q_{i}$ for all $i$. In this case, $s$ to $u$ to $v$ to $s$ makes a cycle (as there are no repeated vertices). Length of this cycle is dis($s$ to $u$) + dis($u$ to $v$) + dis($v$ to $s$) = $x+y+1$. We know that $x+y$ is even, so $x+y+1$ is odd. But $G$ does not contain odd cycles, so this case causes contradiction.\\
+        \\
+        The other case is that $p$ and $q$ paths contain common contain common vertices. Note that any common vertex will have the same index in $p$ and $q$, equal to its label (as shown above). Let $l$ be the largest label such that $p_{l}=q_{l}$. This implies that paths $[p_{l} \dots u]$ and $[p_{l} \dots v]$ are disjoint. Therefore, $p_{l}$ to $u$ to $v$ to $p_{l}$ forms a cycle of length dis($p_{l}$ to $u$) + dis($u$ to $v$) + dis($v$ to $p_{l}$) = $(x-l)$ + $1$ + $(y-l)$ = $x+y-2l+1$. As $x+y$ is even, $x+y-2l+1$ is odd. But $G$ does not contain any odd cycle, so this case causes contradiction.\\
+        \\
+        From the two above contradictions, we can deduce that our assumptions must be wrong and $u$ \& $v$ cannot have an edge, if they belong to the same set.\\
+        \\
+        $\therefore A$ and $B$ are independent sets.\\
+        $\therefore G$ is bipartite.
     \end{case}
 \end{proof}
   
