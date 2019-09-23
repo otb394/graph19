@@ -262,10 +262,10 @@ Let the graph $G$ be a connected graph which does not contain a $C_{3}$ minor. L
     Let $F(k)$ be the statement that all paths of size $k$ are unique between the vertices at their ends.\\
     $\therefore F(1)$ is true\\
     Let $F(i)$ be true for all $i$ from 1 to $m$\\
-    Let $u$ and  $v$ be tho vertices with a path of length $m+1$. Let us assume that there are more than one path between them, namely $p$ and $q$.\\
+    Let $u$ and  $v$ be the vertices with a path of length $m+1$. Let us assume that there are more than one path between them, namely $p$ and $q$.\\
     \\
-    If $p$ and $q$ are disjoint, then $u\xrightarrow{p}v\xrightarrow{q}u$ forms a cycle. This is now allowed in a tree, so $p$ and $q$ are not disjoint.\\
-    Let $x$ be the common vertex between $p$ and $q$ paths. Length of $u$ to $x$ in $p$ mush be $\leq m$. Therefore, $p[u\dots x]$ is the unique path from $u$ to $x$ as $F(i)$ is true for all $i$ from 1 to $m$.\\ 
+    If $p$ and $q$ are disjoint, then $u\xrightarrow{p}v\xrightarrow{q}u$ forms a cycle. This is not allowed in a tree, so $p$ and $q$ are not disjoint.\\
+    Let $x$ be the common vertex between $p$ and $q$ paths. Length of $u$ to $x$ in $p$ must be $\leq m$. Therefore, $p[u\dots x]$ is the unique path from $u$ to $x$ as $F(i)$ is true for all $i$ from 1 to $m$.\\ 
     This implies that,\\
     \begin{equation}
         \label{partialPathFirst}
@@ -286,7 +286,7 @@ Let the graph $G$ be a connected graph which does not contain a $C_{3}$ minor. L
 \begin{corollary}
     Prove that no tree is 2 connected.
     \begin{proof}
-        Let us assume that the tree is 2 connected. According to Menger's theorem, if the graph is 2 connected then there exists 2 disjoint paths from u to v where (u,v) $\in V_G$. However, a tree consists of a unique paths between any two vertices (u,v), as per Theorem~\ref{thm:uniquePath}. This means our assumption was wrong and hence we have verified that no tree is 2 connected.
+        Let us assume that the tree is 2 connected. According to Menger's theorem, if the graph is 2 connected then there exists 2 disjoint paths from u to v where (u,v) $\in V_G$. However, a tree consists of a unique path between any two vertices (u,v), as per Theorem~\ref{thm:uniquePath}. This means our assumption was wrong and hence we have verified that no tree is 2 connected.
     \end{proof}
 \end{corollary}
 

@@ -32,7 +32,7 @@ The number of vertices of odd degree in the graph is even.\\
       \begin{proof}
  To prove this we'll give an algorithm to draw the tree. Consider a given tree $G$ and select any arbitrary point. Consider it to be the root. Now label all the points by the distance from the root. For example the label of root would be 0. As it is a tree,it is connected and all vertices will have a label. Place all the vertices with the same label in the same horizontal level such that if a vertex $p$ comes before vertex $q$ in a horizontal level, then the children of vertex $p$ will come before the children of $q$ in the next horizontal level. We start with the root at the top. This algorithm is illustrated in the Figure \ref{fig:treeDrawing} and \ref{fig:multiLevelTree}.
 
-Let us assume that there is a crossing between the edges of a tree. Let $(p,q)$ and $(r,s)$ be two such edges, where $p$ is the parent of $q$ and $r$ is the parent of $s$. Level of $p$ and $r$ has to be the same because of they were on the different levels edges are vertically separated and cannot intersect. Let $p$ and $r$ be at the level $l$ and $s$ and $q$ at level $l+1$. In order for the crossing to occur, the following condition should be met. If ($p$ is before $r$) then ($s$ is before $q$). This is shown in Figure. \ref{fig:edgeCrossing}. But as stated above if $p$ is before $r$, then all children of $p$ should be placed before all children of $r$. This would mean that $q$ should be placed before s. That would mean the aforementioned condition cannot be satisfied and edge crossing cannot occur.
+Let us assume that there is a crossing between the edges of a tree. Let $(p,q)$ and $(r,s)$ be two such edges, where $p$ is the parent of $q$ and $r$ is the parent of $s$. Level of $p$ and $r$ has to be the same because if they were on the different levels edges are vertically separated and cannot intersect. Let $p$ and $r$ be at the level $l$ and $s$ and $q$ at level $l+1$. In order for the crossing to occur, the following condition should be met. If ($p$ is before $r$) then ($s$ is before $q$). This is shown in Figure. \ref{fig:edgeCrossing}. But as stated above if $p$ is before $r$, then all children of $p$ should be placed before all children of $r$. This would mean that $q$ should be placed before s. That would mean the aforementioned condition cannot be satisfied and edge crossing cannot occur.
           \begin{figure}[h!]
 \begin{center}
 
@@ -395,7 +395,7 @@ Faces of $\underbar{G}$ are path connected components of ${\R^2}$\textbackslash\
 \end{definition}
 
 \begin{definition}
-    Vertices on the same face means, they can be connected using path which is only composed of points of one face.
+    Vertices on the same face means, they can be connected using a path which is only composed of points of one face.
 \end{definition}
 
 \begin{theorem}
