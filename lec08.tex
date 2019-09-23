@@ -19,25 +19,21 @@
 \begin{definition}
 The number of vertices of odd degree in the graph is even.\\
 
-$\sum\nolimits_{v \in V_G} deg(v) = 2 | E_G|$
- 
+\begin{equation*}
+\sum\nolimits_{v \in V_G} deg(v) = 2 | E_G|
+\end{equation*}
 
-
+\end{definition}
 
 \section{Tree}
-%Let X and Y be simplicial complexes. A simplicial map $f: X \rightarrow Y$ is a pair of functions:
-%\centerline {$f_v: V_X \rightarrow V_Y$ and $f_S: S_X \rightarrow S_Y$}
-
-%where $f_S(\sigma) = \{ f_V(u): u \in \sigma \}$
-\end{definition}
 \begin{theorem}
-  Prove that every tree can be drawn in a plane $(R^2 )$  without crossing.
+  Prove that every tree can be drawn in a plane $\R^2$  without crossing.
   \end{theorem}
-      \begin{proof}[Proof idea]
-      
-      For any placement of vertices of a tree,we can draw the edges without crossing.To prove this theorem we take an example.Consider the following tree
-      
-   
+      \begin{proof}
+ To prove this we'll give an algorithm to draw the tree. Consider a given tree $G$ and select any arbitrary point. Consider it to be the root. Now label all the points by the distance from the root. For example the label of root would be 0. As it is a tree,it is connected and all vertices will have a label. Place all the vertices with the same label in the same horizontal level such that if a vertex $p$ comes before vertex $q$ in a horizontal level, then the children of vertex $p$ will come before the children of $q$ in the next horizontal level. We start with the root at the top. This algorithm is illustrated in the Figure \ref{fig:treeDrawing} and \ref{fig:multiLevelTree}.
+
+Let us assume that there is a crossing between the edges of a tree. Let $(p,q)$ and $(r,s)$ be two such edges, where $p$ is the parent of $q$ and $r$ is the parent of $s$. Level of $p$ and $r$ has to be the same because of they were on the different levels edges are vertically separated and cannot intersect. Let $p$ and $r$ be at the level $l$ and $s$ and $q$ at level $l+1$. In order for the crossing to occur, the following condition should be met. If ($p$ is before $r$) then ($s$ is before $q$). This is shown in Figure. \ref{fig:edgeCrossing}. But as stated above if $p$ is before $r$, then all children of $p$ should be placed before all children of $r$. This would mean that $q$ should be placed before s. That would mean the aforementioned condition cannot be satisfied and edge crossing cannot occur.
+          \begin{figure}[h!]
 \begin{center}
 
     \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
@@ -120,7 +116,11 @@ $\sum\nolimits_{v \in V_G} deg(v) = 2 | E_G|$
     
     \end{tikzpicture}
  \end{center}
-    Consider a given tree G and select any arbitrary point. Consider it to be the root.Now label all the points by the distance from the root.For example the label of root would be 0. As it is a tree,it is connected and all vertices will have a label. Place all the vertices with the same label in the same horizontal level such that if a vertex p comes before vertex q in a horizontal level, then the children of vertex p will come before the children of q in the next horizontal level. We start with the root at the top. This algorithm is illustrated below.
+ \caption{Tree drawing algorithm illustration}
+ \label{fig:treeDrawing}
+ \end{figure}
+
+ \begin{figure}[h!]
 \begin{center}
 
     \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
@@ -230,6 +230,11 @@ $\sum\nolimits_{v \in V_G} deg(v) = 2 | E_G|$
     
     \end{tikzpicture}
 \end{center}
+\caption{Drawing multi level tree}
+\label{fig:multiLevelTree}
+\end{figure}
+
+\begin{figure}[h!]
 
 \begin{center}
     
@@ -257,115 +262,120 @@ $\sum\nolimits_{v \in V_G} deg(v) = 2 | E_G|$
     \draw (396,240) node  [align=left] {q};
     \end{tikzpicture}
 \end{center}
-Let us assume that there is a crossing between the edges of a tree. Let (p,q) and (r,s) be two such edges, where p is the parent of q and r is the parent of s. Level of p and r has to be the same because of they were on the different levels edges are vertically separated and cannot intersect. Let p and r be at the level(l) and s and q at level(l+1). In order for the crossing to occur, the following condition should be met. If (p is before r) then (s is before q) but as stated above if p is before r then all children of p should be placed before all children of r. This would mean that q should be placed before s. That would mean the aforementioned condition cannot be satisfied and edge crossing cannot occur.    
+\caption{Edge crossing}
+\label{fig:edgeCrossing}
+\end{figure}
 \end{proof}
-\
   
 \begin{theorem}
 Every binary tree has at least one edge (u,v) such that G \textbackslash(u,v) has 2 components and neither has more than \{(2n)/3 + 1\} vertices.
 \end{theorem}
+
 \begin{proof}[Proof idea]
+    This can be proved by moving down the tree such that if the number of vertices in a given subtree is greater than $2n/3$, we move to the child. There will come a point, where both the children have less than or equal to $2n/3$ sized subtrees. We remove the edge with the child from this node.
 
 
-\begin{center}
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-
-    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
-    
-    %Shape: Ellipse [id:dp5026941740532689] 
-    \draw   (263.97,36.47) .. controls (263.97,32.41) and (268.66,29.12) .. (274.45,29.12) .. controls (280.23,29.12) and (284.92,32.41) .. (284.92,36.47) .. controls (284.92,40.52) and (280.23,43.81) .. (274.45,43.81) .. controls (268.66,43.81) and (263.97,40.52) .. (263.97,36.47) -- cycle ;
-    %Shape: Ellipse [id:dp8052290539693855] 
-    \draw   (248.82,108.6) .. controls (248.82,104.55) and (253.52,101.25) .. (259.3,101.25) .. controls (265.09,101.25) and (269.78,104.55) .. (269.78,108.6) .. controls (269.78,112.66) and (265.09,115.95) .. (259.3,115.95) .. controls (253.52,115.95) and (248.82,112.66) .. (248.82,108.6) -- cycle ;
-    %Shape: Ellipse [id:dp5260936609004553] 
-    \draw   (158.75,106.93) .. controls (158.75,102.87) and (163.44,99.58) .. (169.23,99.58) .. controls (175.01,99.58) and (179.7,102.87) .. (179.7,106.93) .. controls (179.7,110.98) and (175.01,114.28) .. (169.23,114.28) .. controls (163.44,114.28) and (158.75,110.98) .. (158.75,106.93) -- cycle ;
-    %Shape: Ellipse [id:dp0005502308215511453] 
-    \draw   (302.23,66.1) .. controls (302.23,62.05) and (306.92,58.75) .. (312.71,58.75) .. controls (318.49,58.75) and (323.18,62.05) .. (323.18,66.1) .. controls (323.18,70.16) and (318.49,73.45) .. (312.71,73.45) .. controls (306.92,73.45) and (302.23,70.16) .. (302.23,66.1) -- cycle ;
-    %Shape: Ellipse [id:dp49902676693437586] 
-    \draw   (209.77,65.54) .. controls (209.77,61.49) and (214.46,58.2) .. (220.24,58.2) .. controls (226.03,58.2) and (230.72,61.49) .. (230.72,65.54) .. controls (230.72,69.6) and (226.03,72.89) .. (220.24,72.89) .. controls (214.46,72.89) and (209.77,69.6) .. (209.77,65.54) -- cycle ;
-    %Straight Lines [id:da189102538082779] 
-    \draw    (274.45,43.81) -- (220.24,58.2) ;
-    
-    
-    %Straight Lines [id:da8842093294465067] 
-    \draw    (274.45,43.81) -- (312.71,58.75) ;
-    
-    
-    %Straight Lines [id:da3777940096483836] 
-    \draw    (169.23,99.58) -- (220.24,72.89) ;
-    
-    
-    %Straight Lines [id:da8028300693428679] 
-    \draw    (259.3,101.25) -- (220.24,72.89) ;
-    
-    
-    %Shape: Ellipse [id:dp65926601971189] 
-    \draw   (191.97,232.47) .. controls (191.97,228.41) and (196.66,225.12) .. (202.45,225.12) .. controls (208.23,225.12) and (212.92,228.41) .. (212.92,232.47) .. controls (212.92,236.52) and (208.23,239.81) .. (202.45,239.81) .. controls (196.66,239.81) and (191.97,236.52) .. (191.97,232.47) -- cycle ;
-    %Shape: Ellipse [id:dp6411355252121014] 
-    \draw   (109.97,231.47) .. controls (109.97,227.41) and (114.66,224.12) .. (120.45,224.12) .. controls (126.23,224.12) and (130.92,227.41) .. (130.92,231.47) .. controls (130.92,235.52) and (126.23,238.81) .. (120.45,238.81) .. controls (114.66,238.81) and (109.97,235.52) .. (109.97,231.47) -- cycle ;
-    %Straight Lines [id:da5016048102790736] 
-    \draw    (165.12,193.65) -- (153.12,202.65) ;
-    
-    
-    %Straight Lines [id:da9396382704817337] 
-    \draw    (148.12,205.65) -- (136.12,214.65) ;
-    
-    
-    %Straight Lines [id:da5266599741439887] 
-    \draw    (132.45,215.12) -- (120.45,224.12) ;
-    
-    
-    %Straight Lines [id:da8645457315504854] 
-    \draw    (169.22,196.65) -- (183.22,208.65) ;
-    
-    
-    %Straight Lines [id:da5660632425660811] 
-    \draw    (187.22,212.65) -- (202.45,225.12) ;
-    
-    
-    %Shape: Circle [id:dp8947826209460452] 
-    \draw   (377.52,234.87) .. controls (377.52,229.48) and (381.89,225.1) .. (387.29,225.1) .. controls (392.69,225.1) and (397.07,229.48) .. (397.07,234.87) .. controls (397.07,240.27) and (392.69,244.65) .. (387.29,244.65) .. controls (381.89,244.65) and (377.52,240.27) .. (377.52,234.87) -- cycle ;
-    %Shape: Circle [id:dp7757098827760354] 
-    \draw   (415.52,284.87) .. controls (415.52,279.48) and (419.89,275.1) .. (425.29,275.1) .. controls (430.69,275.1) and (435.07,279.48) .. (435.07,284.87) .. controls (435.07,290.27) and (430.69,294.65) .. (425.29,294.65) .. controls (419.89,294.65) and (415.52,290.27) .. (415.52,284.87) -- cycle ;
-    %Shape: Circle [id:dp5978185823414772] 
-    \draw   (329.52,284.87) .. controls (329.52,279.48) and (333.89,275.1) .. (339.29,275.1) .. controls (344.69,275.1) and (349.07,279.48) .. (349.07,284.87) .. controls (349.07,290.27) and (344.69,294.65) .. (339.29,294.65) .. controls (333.89,294.65) and (329.52,290.27) .. (329.52,284.87) -- cycle ;
-    %Straight Lines [id:da544800641882542] 
-    \draw    (387.29,244.65) -- (339.29,275.1) ;
-    
-    
-    %Straight Lines [id:da0421722164760574] 
-    \draw    (387.29,244.65) -- (425.29,275.1) ;
-    
-    
-    
-    % Text Node
-    \draw (274.45,36.47) node  [align=left] {n};
-    % Text Node
-    \draw (220.24,65.54) node  [align=left] {?};
-    % Text Node
-    \draw (312.71,66.1) node  [align=left] {?};
-    % Text Node
-    \draw (169.23,106.93) node  [align=left] {?};
-    % Text Node
-    \draw (259.3,108.6) node  [align=left] {?};
-    % Text Node
-    \draw (170.14,146.17) node  [align=left] {..\\...\\\\..\\..};
-    % Text Node
-    \draw (120.45,231.47) node  [align=left] {1};
-    % Text Node
-    \draw (202.45,232.47) node  [align=left] {1};
-    % Text Node
-    \draw (283.13,232.93) node  [align=left] {else somewhere };
-    % Text Node
-    \draw (419.07,234.1) node  [align=left] {> 2n/3};
-    % Text Node
-    \draw (303.03,285.17) node  [align=left] {< n/3};
-    % Text Node
-    \draw (459.03,285) node  [align=left] {< n/3};
-    
-    
-    \end{tikzpicture}
-\end{center}
+%\begin{figure}
+%\begin{center}
+%\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+%
+%    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%    %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+%    
+%    %Shape: Ellipse [id:dp5026941740532689] 
+%    \draw   (263.97,36.47) .. controls (263.97,32.41) and (268.66,29.12) .. (274.45,29.12) .. controls (280.23,29.12) and (284.92,32.41) .. (284.92,36.47) .. controls (284.92,40.52) and (280.23,43.81) .. (274.45,43.81) .. controls (268.66,43.81) and (263.97,40.52) .. (263.97,36.47) -- cycle ;
+%    %Shape: Ellipse [id:dp8052290539693855] 
+%    \draw   (248.82,108.6) .. controls (248.82,104.55) and (253.52,101.25) .. (259.3,101.25) .. controls (265.09,101.25) and (269.78,104.55) .. (269.78,108.6) .. controls (269.78,112.66) and (265.09,115.95) .. (259.3,115.95) .. controls (253.52,115.95) and (248.82,112.66) .. (248.82,108.6) -- cycle ;
+%    %Shape: Ellipse [id:dp5260936609004553] 
+%    \draw   (158.75,106.93) .. controls (158.75,102.87) and (163.44,99.58) .. (169.23,99.58) .. controls (175.01,99.58) and (179.7,102.87) .. (179.7,106.93) .. controls (179.7,110.98) and (175.01,114.28) .. (169.23,114.28) .. controls (163.44,114.28) and (158.75,110.98) .. (158.75,106.93) -- cycle ;
+%    %Shape: Ellipse [id:dp0005502308215511453] 
+%    \draw   (302.23,66.1) .. controls (302.23,62.05) and (306.92,58.75) .. (312.71,58.75) .. controls (318.49,58.75) and (323.18,62.05) .. (323.18,66.1) .. controls (323.18,70.16) and (318.49,73.45) .. (312.71,73.45) .. controls (306.92,73.45) and (302.23,70.16) .. (302.23,66.1) -- cycle ;
+%    %Shape: Ellipse [id:dp49902676693437586] 
+%    \draw   (209.77,65.54) .. controls (209.77,61.49) and (214.46,58.2) .. (220.24,58.2) .. controls (226.03,58.2) and (230.72,61.49) .. (230.72,65.54) .. controls (230.72,69.6) and (226.03,72.89) .. (220.24,72.89) .. controls (214.46,72.89) and (209.77,69.6) .. (209.77,65.54) -- cycle ;
+%    %Straight Lines [id:da189102538082779] 
+%    \draw    (274.45,43.81) -- (220.24,58.2) ;
+%    
+%    
+%    %Straight Lines [id:da8842093294465067] 
+%    \draw    (274.45,43.81) -- (312.71,58.75) ;
+%    
+%    
+%    %Straight Lines [id:da3777940096483836] 
+%    \draw    (169.23,99.58) -- (220.24,72.89) ;
+%    
+%    
+%    %Straight Lines [id:da8028300693428679] 
+%    \draw    (259.3,101.25) -- (220.24,72.89) ;
+%    
+%    
+%    %Shape: Ellipse [id:dp65926601971189] 
+%    \draw   (191.97,232.47) .. controls (191.97,228.41) and (196.66,225.12) .. (202.45,225.12) .. controls (208.23,225.12) and (212.92,228.41) .. (212.92,232.47) .. controls (212.92,236.52) and (208.23,239.81) .. (202.45,239.81) .. controls (196.66,239.81) and (191.97,236.52) .. (191.97,232.47) -- cycle ;
+%    %Shape: Ellipse [id:dp6411355252121014] 
+%    \draw   (109.97,231.47) .. controls (109.97,227.41) and (114.66,224.12) .. (120.45,224.12) .. controls (126.23,224.12) and (130.92,227.41) .. (130.92,231.47) .. controls (130.92,235.52) and (126.23,238.81) .. (120.45,238.81) .. controls (114.66,238.81) and (109.97,235.52) .. (109.97,231.47) -- cycle ;
+%    %Straight Lines [id:da5016048102790736] 
+%    \draw    (165.12,193.65) -- (153.12,202.65) ;
+%    
+%    
+%    %Straight Lines [id:da9396382704817337] 
+%    \draw    (148.12,205.65) -- (136.12,214.65) ;
+%    
+%    
+%    %Straight Lines [id:da5266599741439887] 
+%    \draw    (132.45,215.12) -- (120.45,224.12) ;
+%    
+%    
+%    %Straight Lines [id:da8645457315504854] 
+%    \draw    (169.22,196.65) -- (183.22,208.65) ;
+%    
+%    
+%    %Straight Lines [id:da5660632425660811] 
+%    \draw    (187.22,212.65) -- (202.45,225.12) ;
+%    
+%    
+%    %Shape: Circle [id:dp8947826209460452] 
+%    \draw   (377.52,234.87) .. controls (377.52,229.48) and (381.89,225.1) .. (387.29,225.1) .. controls (392.69,225.1) and (397.07,229.48) .. (397.07,234.87) .. controls (397.07,240.27) and (392.69,244.65) .. (387.29,244.65) .. controls (381.89,244.65) and (377.52,240.27) .. (377.52,234.87) -- cycle ;
+%    %Shape: Circle [id:dp7757098827760354] 
+%    \draw   (415.52,284.87) .. controls (415.52,279.48) and (419.89,275.1) .. (425.29,275.1) .. controls (430.69,275.1) and (435.07,279.48) .. (435.07,284.87) .. controls (435.07,290.27) and (430.69,294.65) .. (425.29,294.65) .. controls (419.89,294.65) and (415.52,290.27) .. (415.52,284.87) -- cycle ;
+%    %Shape: Circle [id:dp5978185823414772] 
+%    \draw   (329.52,284.87) .. controls (329.52,279.48) and (333.89,275.1) .. (339.29,275.1) .. controls (344.69,275.1) and (349.07,279.48) .. (349.07,284.87) .. controls (349.07,290.27) and (344.69,294.65) .. (339.29,294.65) .. controls (333.89,294.65) and (329.52,290.27) .. (329.52,284.87) -- cycle ;
+%    %Straight Lines [id:da544800641882542] 
+%    \draw    (387.29,244.65) -- (339.29,275.1) ;
+%    
+%    
+%    %Straight Lines [id:da0421722164760574] 
+%    \draw    (387.29,244.65) -- (425.29,275.1) ;
+%    
+%    
+%    
+%    % Text Node
+%    \draw (274.45,36.47) node  [align=left] {n};
+%    % Text Node
+%    \draw (220.24,65.54) node  [align=left] {?};
+%    % Text Node
+%    \draw (312.71,66.1) node  [align=left] {?};
+%    % Text Node
+%    \draw (169.23,106.93) node  [align=left] {?};
+%    % Text Node
+%    \draw (259.3,108.6) node  [align=left] {?};
+%    % Text Node
+%    \draw (170.14,146.17) node  [align=left] {..\\...\\\\..\\..};
+%    % Text Node
+%    \draw (120.45,231.47) node  [align=left] {1};
+%    % Text Node
+%    \draw (202.45,232.47) node  [align=left] {1};
+%    % Text Node
+%    \draw (283.13,232.93) node  [align=left] {else somewhere };
+%    % Text Node
+%    \draw (419.07,234.1) node  [align=left] {$>2n/3$};
+%    % Text Node
+%    \draw (303.03,285.17) node  [align=left] {$< n/3$};
+%    % Text Node
+%    \draw (459.03,285) node  [align=left] {$< n/3$};
+%    
+%    
+%    \end{tikzpicture}
+%\end{center}
+%\end{figure}
 \end{proof}
 
 
@@ -373,20 +383,77 @@ Every binary tree has at least one edge (u,v) such that G \textbackslash(u,v) ha
 \begin{definition}
 A graph is outer planar if it can be embedded in the plane so that every vertex is on the same face.
 
-${G \rightarrow geom (G) \subseteq {R^n} \xrightarrow[\text{}]{\text{embed}} Embedding  \subseteq {R^2}}$
+${G \rightarrow geom (G) \subseteq {\R^n} \xrightarrow[\text{}]{\text{embed}} Embedding  \subseteq {\R^2}}$
 
 The second mapping (the embed one) is an injective mapping.
 
 \end{definition}
 
 
-
 \begin{definition}
-Faces of $\underbar{G}$ are path connected components of ${R^2}$\textbackslash\underbar{G} 
+Faces of $\underbar{G}$ are path connected components of ${\R^2}$\textbackslash\underbar{G} 
 \end{definition}
 
-Some examples are
+\begin{definition}
+    Vertices on the same face means, they can be connected using path which is only composed of points of one face.
+\end{definition}
 
+\begin{theorem}
+    $G$ is outer planar, iff it has no $K_{4}$ or $K_{2,3}$ minors
+\end{theorem}
+
+\begin{theorem}
+    Any graph property expressed as forbidden minors is preserved by edge contractions.
+\end{theorem}
+
+\begin{proof}
+    If a graph $M$ is not a minor of graph $G$, it cannot be the minor of $G'$ obtained by contracting the edges of graph $G$. This is because if $M$ was the minor of $G'$, it could be obtained by contracting $G'$, then it could also be obtained from $G$ by first contracting to $G'$ and then $M$. That would make it a minor of $G$.
+\end{proof}
+
+\begin{figure}[h!]
+    \begin{center}
+
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+
+% Text Node
+\draw (120,128) node  [align=left] {G};
+% Text Node
+\draw (224,147) node  [align=left] {M};
+% Text Node
+\draw (158,174) node  [align=left] {G`};
+% Text Node
+\draw (87,157) node  [align=left] {Contraction};
+% Connection
+\draw    (130,129.83) -- (207.5,143.99) ;
+\draw [shift={(207.5,143.99)}, rotate = 55.35] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (-5.59,0) -- (5.59,0)(0,5.59) -- (0,-5.59)   ;
+
+% Connection
+\draw    (170.5,168.89) -- (207.5,153.75) ;
+\draw [shift={(207.5,153.75)}, rotate = 382.75] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (-5.59,0) -- (5.59,0)(0,5.59) -- (0,-5.59)   ;
+
+% Connection
+\draw    (129.09,139) -- (147.64,161.46) ;
+\draw [shift={(148.91,163)}, rotate = 230.44] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+
+\end{tikzpicture}
+\end{center}
+\caption{Minors are invariants in edge contraction}
+\end{figure}
+
+\begin{corollary}
+If a Graph G does not have a minor M, then its contraction G' also does not have a minor.
+\end{corollary}
+
+
+\begin{figure}
+\label{fig:faces}
 \begin{center}
     
     \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
@@ -412,8 +479,14 @@ Some examples are
     
     
     \end{tikzpicture}
+    \caption{Example to show faces}
+\end{center}
+
+\end{figure}
      
     
+\begin{figure}
+\begin{center}
     \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
     
     \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
@@ -447,10 +520,10 @@ Some examples are
     
     \end{tikzpicture}
 \end{center}
+\caption{$K_{4}$}
+\end{figure}
 
-${K_4}$
-
-
+\begin{figure}
 \begin{center}
     
     \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
@@ -479,11 +552,7 @@ ${K_4}$
     
     
     \end{tikzpicture}\\
-    ${{K_2}{_,}{_3}}$
 \end{center}
-
-
-
-Note:
-If a Graph G does not have a minor M,then its contraction G' also does not have a minor.
+\caption{$K_{2,3}$}
+\end{figure}
 \end{document}
