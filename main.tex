@@ -64,7 +64,7 @@
         \\
         If $p$ \& $q$ are disjoint paths, then $p_{i}\ne q_{i}$ for all $i$. In this case, $s$ to $u$ to $v$ to $s$ makes a cycle (as there are no repeated vertices). Length of this cycle is dis($s$ to $u$) + dis($u$ to $v$) + dis($v$ to $s$) = $x+y+1$. We know that $x+y$ is even, so $x+y+1$ is odd. But $G$ does not contain odd cycles, so this case causes contradiction.\\
         \\
-        The other case is that $p$ and $q$ paths contain common contain common vertices. Note that any common vertex will have the same index in $p$ and $q$, equal to its label (as shown above). Let $l$ be the largest label such that $p_{l}=q_{l}$. This implies that paths $[p_{l} \dots u]$ and $[p_{l} \dots v]$ are disjoint. Therefore, $p_{l}$ to $u$ to $v$ to $p_{l}$ forms a cycle of length dis($p_{l}$ to $u$) + dis($u$ to $v$) + dis($v$ to $p_{l}$) = $(x-l)$ + $1$ + $(y-l)$ = $x+y-2l+1$. As $x+y$ is even, $x+y-2l+1$ is odd. But $G$ does not contain any odd cycle, so this case causes contradiction.\\
+        The other case is that $p$ and $q$ paths contain common vertices. Note that any common vertex will have the same index in $p$ and $q$, equal to its label (as shown above). Let $l$ be the largest label such that $p_{l}=q_{l}$. This implies that paths $[p_{l} \dots u]$ and $[p_{l} \dots v]$ are disjoint. This is because if there were any other common point, then that would have label more than $l$, which is not possible as $l$ is supposed to be the largest. Therefore, $p_{l}$ to $u$ to $v$ to $p_{l}$ forms a cycle of length dis($p_{l}$ to $u$) + dis($u$ to $v$) + dis($v$ to $p_{l}$) = $(x-l)$ + $1$ + $(y-l)$ = $x+y-2l+1$. As $x+y$ is even, $x+y-2l+1$ is odd. But $G$ does not contain any odd cycle, so this case causes contradiction.\\
         \\
         From the two above contradictions, we can deduce that our assumptions must be wrong and $u$ \& $v$ cannot have an edge, if they belong to the same set.\\
         \\
@@ -225,22 +225,24 @@ Let us assume that the graph, G is not a tree which means there exists a connect
     \end{case}
 \end{proof}
 
-\begin{text}
-{\textbf{Claim:} Given a tree and two vertices, u,v $\in V_{T}$ there exists a unique path u to v in T.}   
-\end{text}
+\begin{theorem}
+    Given a tree and two vertices, u,v $\in V_{T}$ there exists a unique path u to v in T.
+\end{theorem}
 
-\begin{text}
-{\textbf {Question: }Prove that no tree is 2 connected.}
+\begin{corollary}
+    Prove that no tree is 2 connected.
     \begin{proof}
-        Bla Bla Bla....       
+        Let us assume that the tree is 2 connected. According to Menger's theorem, if the graph is 2 connected then there exists 2 disjoint paths from u to v where (u,v) $\in V_G$. However, a tree consists of a unique paths between any two vertices (u,v). This means our assumption was wrong and hence we verified that no tree is 2 connected.
     \end{proof}
-\end{text}
+\end{corollary}
+
 \begin{text}
 {\textbf {Corollary: }Removal of an edge in a tree will separate the graph.}
     \begin{proof}
         Bla Bla Bla....       
     \end{proof}
 \end{text}
+
 \begin{definition}
 A leaf \footnote{A \textbf{star} has (n-1) leaves and a \textbf{path} has 2 leaves} of a tree (graph) is a degree 1 vertex. On separating leaf we are still left with a connected graph.
 \end{definition}
