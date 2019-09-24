@@ -344,7 +344,7 @@ A leaf of a tree (graph) is a degree 1 vertex.
             F(r) &= r-1\\
             F(s) &= s-1
         \end{align*}
-        Therefore, the total number of edges in the tree, $F(k) = F(r) + F(s) + 1 = m - 1 + n - 1 + 1 = m + n - 1 = k-1$\\
+        Therefore, the total number of edges in the tree, $F(k) = F(r) + F(s) + 1 = r - 1 + s - 1 + 1 = r + s - 1 = k-1$\\
         Therefore, by induction we can say that $F(n)=n-1$, i.e. in a tree of size $n$, there are $n-1$ edges.
     \end{proof}
 \end{question}
@@ -359,7 +359,7 @@ A leaf of a tree (graph) is a degree 1 vertex.
         N=S_{1}+S_{2}\dots S_{C}
     \end{equation}
     \begin{align*}
-        \text{Number of edges} (E) &= S_{1}-1+S_{1}-1+\dots S_{C}-1\\
+        \text{Number of edges} (E) &= S_{1}-1+S_{2}-1+\dots S_{C}-1\\
         &= (S_{1}+S_{2}+\dots S_{C})-C\\
         &= N-C \phantom{xxxxx}\text{(using \ref{eq:sumOfTrees})}
     \end{align*}
